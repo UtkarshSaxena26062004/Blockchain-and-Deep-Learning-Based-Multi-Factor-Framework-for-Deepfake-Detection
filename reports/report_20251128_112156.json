@@ -1,0 +1,17 @@
+{
+  "file": "Mussorie_Vibes_Changed.jpg",
+  "ai_score": 0.0013,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_Mussorie_Vibes_Changed_20251128112153.jpg"
+  ],
+  "blockchain_verified": true,
+  "tx_hash": "0x2f1c82260249aafe950a82d336dac37a0711f75341885de3116ba93f9f74b643",
+  "authenticity_score": 0.939,
+  "hash": "9f70a40ad4bce7379cbd10ccce35e380b1b1a54e5d57be128ec571d0d3f4d8ee",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-11-28T11:21:56.294018"
+}

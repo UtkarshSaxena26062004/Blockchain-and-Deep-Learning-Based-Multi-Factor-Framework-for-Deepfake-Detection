@@ -1,0 +1,20 @@
+{
+  "file": "TF.jpg",
+  "ai_score": 0.0585,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_TF_20251210103351.jpg"
+  ],
+  "blockchain_verified": true,
+  "tx_hash": "0x2840addd2b8f996c10465d5875f901fd93911e22e4d5c9574af25b3a2fdbdeb9",
+  "authenticity_score": 0.905,
+  "hash": "2b56f694914b2625ec856a0a7841c03e03b42e824108353ad5ff9213d55c327e",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-12-10T10:33:52.094832",
+  "predicted_label": "real",
+  "true_label": null,
+  "final_label": "real"
+}

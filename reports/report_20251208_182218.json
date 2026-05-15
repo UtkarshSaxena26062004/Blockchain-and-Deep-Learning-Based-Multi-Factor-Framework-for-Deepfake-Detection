@@ -1,0 +1,17 @@
+{
+  "file": "WhatsApp_Image_2025-12-08_at_17.57.51_70d72b2b.jpg",
+  "ai_score": 0.0019,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_WhatsApp_Image_2025-12-08_at_17.57.51_70d72b2b_20251208182218.jpg"
+  ],
+  "blockchain_verified": true,
+  "tx_hash": null,
+  "authenticity_score": 0.939,
+  "hash": "964a726d83f41a93d0994d041f32ef003939e14b44900bc05062258cbc28cedc",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-12-08T18:22:18.412241"
+}

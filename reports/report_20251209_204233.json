@@ -1,0 +1,17 @@
+{
+  "file": "Skill_India_Mandal_Level.jpg",
+  "ai_score": 0.0117,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_Skill_India_Mandal_Level_20251209204231.jpg"
+  ],
+  "blockchain_verified": true,
+  "tx_hash": "0x86eaa58ee05a5aaca3fa2caca76bb71d4558e0d7510627ea9464517019e44a0a",
+  "authenticity_score": 0.933,
+  "hash": "8dfc140dc2ed23b881597b506d9fc2003c43c50883b4b79183b6447dfa5540b7",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-12-09T20:42:33.163447"
+}

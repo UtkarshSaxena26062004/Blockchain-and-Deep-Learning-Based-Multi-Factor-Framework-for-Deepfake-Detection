@@ -1,0 +1,17 @@
+{
+  "file": "Gemini_Generated_Image_arxc45arxc45arxc.png",
+  "ai_score": 0.0681,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_Gemini_Generated_Image_arxc45arxc45arxc_20251208182254.jpg"
+  ],
+  "blockchain_verified": true,
+  "tx_hash": "0xf1ba1e5356d1c74a02d0f347ec6ea8bf4fd1a6e77f827891b3a5a773b9e1acea",
+  "authenticity_score": 0.899,
+  "hash": "3e21734638ea582d62691d675d87395e4516492a6cae2afff15cb261373b7be8",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-12-08T18:22:55.299547"
+}

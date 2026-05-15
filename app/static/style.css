@@ -1,0 +1,409 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.upload-card, .result-card {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 800px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #90caf9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #f6f9ff;
+}
+
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  margin: 5px;
+}
+
+.btn-primary {
+  background: #1976d2;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.note {
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+}
+
+.result-summary {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  width: 30%;
+}
+
+.chart-container {
+  width: 90%;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.fadeIn {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #dbeafe, #fef9c3);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #1e3a8a;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+}
+
+.card {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 20px 40px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card.real {
+  border-top: 6px solid #34d399;
+}
+.card.fake {
+  border-top: 6px solid #f87171;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+  color: #374151;
+}
+.card p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.chart-section {
+  margin: 40px 0;
+}
+
+canvas {
+  margin-bottom: 40px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background: #e0f2fe;
+}
+
+tr:hover {
+  background: #f1f5f9;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  background: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+.back-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Fix for 'View' button in the table */
+table td a.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.9em;
+  background-color: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+table td a.btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+td {
+  vertical-align: middle;
+}
+table td {
+  height: 60px;
+}
+
+
+/* ===== Fix: keep content inside card, stop overflow ===== */
+.container {
+  box-sizing: border-box;   /* ensure padding included in width */
+  overflow: hidden;         /* prevent children overflowing visually */
+  position: relative;
+}
+
+/* Make table cells more compact so long filenames don't push layout */
+table th, table td {
+  padding: 8px 10px;        /* reduce padding */
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+/* Limit filename column so long names don't expand the row */
+table tbody tr td:first-child {
+  max-width: 260px;         /* tune this (px) as you like */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;         /* nicer alignment for filenames */
+  padding-right: 12px;
+}
+
+/* If you add a separate class like .filename, you can target that instead */
+/* .filename { max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } */
+
+/* Keep the SHA/hash compact too */
+table tbody tr td:nth-child(6) {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.85em;
+  color: #555;
+}
+
+/* Style the View button so it always fits inside the cell */
+table td a.btn, table td .btn {
+  display: inline-block;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  background-color: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(59,130,246,0.18);
+  transition: transform .12s ease, background-color .12s ease;
+}
+
+/* Keep button from pushing other content (shrink if necessary) */
+table td {
+  min-width: 0; /* allows shrinking inside flex/grid containers */
+}
+
+/* Hover effect for button */
+table td a.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  background-color: #2563eb;
+}
+
+/* Ensure rows don't overflow the white card background */
+.container table {
+  width: 100%;
+  table-layout: fixed; /* important: makes columns respect max-width and ellipsis */
+}
+
+/* Optional: make dashboard card itself clip any overflowing children */
+.container {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Small screens: make table horizontally scrollable rather than breaking layout */
+@media (max-width: 820px) {
+  .container {
+    overflow-x: auto;
+  }
+  table {
+    min-width: 900px;
+  }
+}
+
+/* Detailed report: compact hash display */
+.hash {
+  display: inline-block;
+  max-width: 360px;       /* adjust as needed — controls visible length */
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;     /* smaller font for long hex */
+  color: #374151;
+  background: #f8fafc;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #e6eef8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+/* Make copy button small and inline */
+.copy-hash-btn {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  vertical-align: middle;
+  box-shadow: 0 2px 6px rgba(59,130,246,0.16);
+}
+
+.copy-hash-btn:hover { background: #2563eb; transform: translateY(-1px); }
+
+/* For very small screens, allow hash to wrap instead of overflowing card */
+@media (max-width: 480px) {
+  .hash {
+    white-space: normal;
+    word-break: break-all;
+    max-width: 100%;
+  }
+}
+
+.btn-group-custom {
+    display: flex;
+    justify-content: center; 
+    gap: 15px;               
+    margin-top: 25px;
+}
+.btn-custom {
+    background: linear-gradient(135deg, #4e73df, #224abe);
+    color: #fff;
+    padding: 10px 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-block;   
+}
+    .btn-custom:hover {
+        background: linear-gradient(135deg, #224abe, #4e73df);
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary-custom {
+        background: #6c757d;
+        color: #fff;
+        padding: 10px 22px;
+        font-weight: 600;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+    .btn-secondary-custom:hover {
+        background: #565e64;
+        transform: translateY(-2px);
+    }
+
+    .btn-info-custom {
+        background: #0dcaf0;
+        color: #000;
+        padding: 10px 22px;
+        font-weight: 600;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+    .btn-info-custom:hover {
+        background: #31d2f2;
+        transform: translateY(-2px);
+    }
+
+    .btn-group-custom {
+        margin-top: 25px;
+        display: flex;
+        gap: 15px;
+    }

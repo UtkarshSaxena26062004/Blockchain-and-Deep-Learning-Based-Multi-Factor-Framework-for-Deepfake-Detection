@@ -1,0 +1,17 @@
+{
+  "file": "UtkarshSaxena_Fake.jpg",
+  "ai_score": 0.4705,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_UtkarshSaxena_Fake_20251123191424.jpg"
+  ],
+  "blockchain_verified": false,
+  "tx_hash": null,
+  "authenticity_score": 0.558,
+  "hash": "884c694daf8eee63a1f8049b4dfac62dc3e44e45983c6095fadb6a9f56374211",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-11-23T19:14:24.993531"
+}

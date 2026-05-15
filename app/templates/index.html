@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deepfake Detection Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+</head>
+<body>
+  <div class="main-container">
+    <div class="upload-card fadeIn">
+      <h1>🎭 Utkarsh Deepfake Detection System</h1>
+      <p class="subtitle">Upload an <b>image</b> or <b>video</b> to verify its authenticity.</p>
+      
+      <form method="post" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*,video/*" required class="file-input">
+        <button type="submit" class="btn-primary">Analyze Now</button>
+      </form>
+
+      <p class="note">Note: Works for both images and videos.<br>Model trained on DFDC / FaceForensics++ dataset.</p>
+
+      <a href="/dashboard" class="btn-secondary">📊 View Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

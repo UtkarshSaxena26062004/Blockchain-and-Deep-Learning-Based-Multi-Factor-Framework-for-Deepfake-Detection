@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deepfake Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Deepfake Detection Dashboard</h1>
+
+    <div class="stats">
+      <div class="card real">
+        <h3>🟢 Real</h3>
+        <p>{{ real_count }}</p>
+      </div>
+      <div class="card fake">
+        <h3>🔴 Fake</h3>
+        <p>{{ fake_count }}</p>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>AI Fake Probability (per file)</h2>
+      <canvas id="aiChart"></canvas>
+
+      <h2>Authenticity Score (per file)</h2>
+      <canvas id="authChart"></canvas>
+    </div>
+
+    <h2>📁 Recent Reports</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Date & Time</th> <!-- ✅ Added -->
+          <th>AI Score</th>
+          <th>Authenticity</th>
+          <th>Blockchain</th>
+          <th>SHA256</th> <!-- ✅ Added -->
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in range(filenames|length) %}
+        <tr>
+          <td>{{ filenames[i] }}</td>
+          <td>{{ timestamps[i] }}</td> <!-- ✅ Added -->
+          <td>{{ ai_scores[i] }}</td>
+          <td>{{ authenticity[i] }}</td>
+          <td>{{ blockchain[i] }}</td>
+          <td style="font-size:0.8em; color:#666;">{{ hashes[i][:16] }}...</td> <!-- ✅ Added -->
+          <td><a href="{{ url_for('detailed_report', filename=filenames[i]) }}" class="btn btn-sm btn-info">📊 View</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="btn-group-custom">
+    <a href="{{ url_for('metrics') }}" class="btn-info-custom">View Model Metrics</a>
+    </div>
+    
+    <!-- ✅ PDF download button -->
+    <div style="text-align:center; margin-top:30px;">
+      <a href="/download_report" class="back-btn">📄 Download Full Report (PDF)</a>
+    </div>
+
+    <a href="/" class="back-btn">⬅ Back to Home</a>
+  </div>
+
+  <script>
+    const filenames = {{ filenames|tojson }};
+    const ai_scores = {{ ai_scores|tojson }};
+    const authenticity = {{ authenticity|tojson }};
+
+    // AI Fake Probability Chart
+    new Chart(document.getElementById('aiChart'), {
+      type: 'bar',
+      data: {
+        labels: filenames,
+        datasets: [{
+          label: 'Fake Probability (AI Score)',
+          data: ai_scores,
+          backgroundColor: '#f87171',
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 1 } },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Authenticity Chart
+    new Chart(document.getElementById('authChart'), {
+      type: 'line',
+      data: {
+        labels: filenames,
+        datasets: [{
+          label: 'Authenticity Score',
+          data: authenticity,
+          borderColor: '#34d399',
+          backgroundColor: '#6ee7b7',
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 1 } }
+      }
+    });
+  </script>
+</body>
+</html>

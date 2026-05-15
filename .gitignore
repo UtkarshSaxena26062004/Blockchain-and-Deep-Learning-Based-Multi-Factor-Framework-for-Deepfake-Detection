@@ -1,0 +1,39 @@
+# Virtual Environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Uploaded/generated runtime files
+uploads/
+reports/thumbs/
+static/reports/
+
+# Large datasets
+data/
+SDFVD/
+
+# Large media files
+*.mp4
+*.avi
+*.mov
+*.zip
+
+# ML model files (heavy)
+*.h5
+*.pth
+*.pt
+
+# PDFs (generated reports)
+*.pdf
+
+# Temporary files
+.ipynb_checkpoints/
+.DS_Store
+
+# Fonts (optional heavy folder)
+app/dejavu-fonts-ttf-2.37/
+
+# Logs
+*.log

@@ -1,0 +1,17 @@
+{
+  "file": "MonaLisa_Real.png",
+  "ai_score": 0.9998,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_MonaLisa_Real_20251128111714.jpg"
+  ],
+  "blockchain_verified": false,
+  "tx_hash": null,
+  "authenticity_score": 0.24,
+  "hash": "9ad94cdf229e5a3045fa29075a54168bfc8c32d3fe2d3019fdde45acff1e5a48",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-11-28T11:17:15.194293"
+}

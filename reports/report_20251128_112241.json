@@ -1,0 +1,17 @@
+{
+  "file": "Utkarsh_SRK.jpg",
+  "ai_score": 0.9934,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_Utkarsh_SRK_20251128112241.jpg"
+  ],
+  "blockchain_verified": false,
+  "tx_hash": null,
+  "authenticity_score": 0.244,
+  "hash": "4c195dd4bce517819574d74c34918ca8bd1d1054802e1a2b3235a2f343df7657",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-11-28T11:22:41.971302"
+}

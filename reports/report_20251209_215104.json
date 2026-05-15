@@ -1,0 +1,40 @@
+{
+  "file": "Rahul_Gandhi_ji_Fake.mp4",
+  "ai_score": 0.0058,
+  "frame_scores": [
+    0.002699133474379778,
+    0.002161447424441576,
+    0.002072362694889307,
+    0.002374381059780717,
+    0.0019095734460279346,
+    0.0012760449899360538,
+    0.003445311216637492,
+    0.0018289090367034078,
+    0.007358242757618427,
+    0.005846900399774313,
+    0.016610803082585335,
+    0.010460524819791317,
+    0.016386069357395172,
+    0.004844138398766518,
+    0.008136956952512264
+  ],
+  "thumbs": [
+    "thumbs\\Rahul_Gandhi_ji_Fake_frame0_20251209215052.jpg",
+    "thumbs\\Rahul_Gandhi_ji_Fake_frame10_20251209215052.jpg",
+    "thumbs\\Rahul_Gandhi_ji_Fake_frame20_20251209215052.jpg",
+    "thumbs\\Rahul_Gandhi_ji_Fake_frame30_20251209215052.jpg",
+    "thumbs\\Rahul_Gandhi_ji_Fake_frame40_20251209215052.jpg"
+  ],
+  "blockchain_verified": true,
+  "tx_hash": null,
+  "authenticity_score": 0.937,
+  "hash": "9792a3b09e05532331da773167af393df857fcf1a9bea592c7d9cdf6d93d0c43",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-12-09T21:51:04.645947",
+  "predicted_label": "real",
+  "true_label": "fake",
+  "final_label": "fake"
+}

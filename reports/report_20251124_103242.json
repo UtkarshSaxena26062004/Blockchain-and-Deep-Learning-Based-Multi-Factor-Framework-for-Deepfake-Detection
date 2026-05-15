@@ -1,0 +1,17 @@
+{
+  "file": "My_Pic_With_Rajesh_Khanna.jpg",
+  "ai_score": 0.7027,
+  "frame_scores": [],
+  "thumbs": [
+    "thumbs\\thumb_My_Pic_With_Rajesh_Khanna_20251124103242.jpg"
+  ],
+  "blockchain_verified": false,
+  "tx_hash": null,
+  "authenticity_score": 0.418,
+  "hash": "5785bceb01d1d5f79d4ad50cae094b93d2b8d065bb93e4e7787fd8bbb95415d1",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-11-24T10:32:42.893632"
+}

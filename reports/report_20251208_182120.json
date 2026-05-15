@@ -1,0 +1,33 @@
+{
+  "file": "vs10.mp4",
+  "ai_score": 0.9457,
+  "frame_scores": [
+    0.9650338888168335,
+    0.9643403887748718,
+    0.7925167083740234,
+    0.9716545343399048,
+    0.9385811686515808,
+    0.967675507068634,
+    0.9525702595710754,
+    0.9915395379066467,
+    0.9777694344520569,
+    0.9525737762451172,
+    0.9280776977539062
+  ],
+  "thumbs": [
+    "thumbs\\vs10_frame0_20251208182117.jpg",
+    "thumbs\\vs10_frame10_20251208182117.jpg",
+    "thumbs\\vs10_frame20_20251208182117.jpg",
+    "thumbs\\vs10_frame30_20251208182117.jpg",
+    "thumbs\\vs10_frame40_20251208182117.jpg"
+  ],
+  "blockchain_verified": false,
+  "tx_hash": null,
+  "authenticity_score": 0.273,
+  "hash": "9c813f4fa06c4590f8dd10e68e7a7ce5abb837cf66415758ed2130ca1ea9612c",
+  "model_name": "deepfake_model.h5",
+  "model_sha256": "08f1b8aa7907ef469cb18922c573161f41bf6d456cca8c2ab41113a161975cc4",
+  "tf_version": "2.20.0",
+  "python_version": "3.9.13",
+  "generated_at": "2025-12-08T18:21:20.101253"
+}

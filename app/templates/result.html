@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Detection Result</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="main-container">
+    <div class="result-card fadeIn">
+      <h1>🧠 Analysis Report</h1>
+
+      <div class="result-summary">
+        <div class="stat-card">
+          <h3>AI Fake Probability</h3>
+          <p>{{ '%.3f' % report.ai_score }}</p>
+        </div>
+        <div class="stat-card">
+          <h3>Authenticity Score</h3>
+          <p>{{ '%.3f' % report.authenticity_score }}</p>
+        </div>
+        <div class="stat-card">
+          <h3>Blockchain Verified</h3>
+          <p>{{ report.blockchain_verified }}</p>
+        </div>
+         <!-- ✅ Deepfake vs Real -->
+      <div class="stat-card">
+        <h3>Result</h3>
+        {% if report.ai_score <= 0.5 %}
+          <p style="color:green; font-weight:bold;">Real ✅</p>
+        {% else %}
+          <p style="color:red; font-weight:bold;">Deepfake ❌</p>
+        {% endif %}
+      </div>
+      </div>
+
+      <canvas id="resultChart" width="400" height="150" data-fakeprob="{{ report.ai_score }}"></canvas>
+
+      <div class="report-details">
+        <h3>📁 File Details</h3>
+        <ul>
+          <li><b>File:</b> {{ report.file }}</li>
+          <li><b>SHA256:</b> {{ report.hash }}</li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <a href="/" class="btn-secondary">⬅️ Upload Another</a>
+        <a href="/dashboard" class="btn-primary">📊 View Dashboard</a>
+        <a href="{{ url_for('detailed_report', filename=report.file) }}" class="btn-custom">View Detailed Report</a>
+      </div>
+    </div>
+  </div>
+
+<div class="btn-group-custom">
+    <a href="{{ url_for('index') }}" class="btn-secondary-custom">Back</a>
+    <a href="{{ url_for('metrics') }}" class="btn-info-custom">View Model Metrics</a>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/static/script.js"></script>
+</body>
+</html>

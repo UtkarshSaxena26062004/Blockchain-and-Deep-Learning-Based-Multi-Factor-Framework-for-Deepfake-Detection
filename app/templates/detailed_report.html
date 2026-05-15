@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- jinja2 -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detailed Report - {{ filename }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .container{ max-width:980px; margin:20px auto; font-family:system-ui,Segoe UI,Roboto,Arial; }
+    .card{ background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.06); margin-bottom:16px; }
+    .hash{ font-family:monospace; background:#f6f6f6; padding:4px 8px; border-radius:4px; display:inline-block; }
+    .thumb-grid{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    .thumb-grid img{ width:150px; height:auto; border-radius:6px; border:1px solid #ddd; }
+    .meta-list{ list-style:none; padding-left:0; margin:0; }
+    .meta-list li{ margin-bottom:6px; }
+    .small-muted{ color:#666; font-size:0.9rem; }
+    .btn{ display:inline-block; padding:6px 10px; border-radius:6px; text-decoration:none; border:none; cursor:pointer; background:#2d7cff; color:#fff; }
+    .btn-secondary{ background:#6c757d; }
+    .truth-select{ padding:6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📄 Detailed Analysis: {{ filename }}</h1>
+
+    {# === flash messages (e.g. "Ground truth saved.") === #}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div style="padding:8px 12px; border-radius:6px; background:#e6ffed; border:1px solid #2ecc71; margin-bottom:10px; font-size:0.9rem;">
+          {% for msg in messages %}
+            ✔ {{ msg }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- === top card: basic info + actions === -->
+     <p><strong>Model predicted:</strong>
+  {{ 'fake' if report.ai_score >= 0.5 else 'real' }}
+</p>
+
+{% if report.true_label %}
+  <p><strong>True label (feedback):</strong> {{ report.true_label }}</p>
+  <p><strong>Final verdict:</strong> {{ report.final_label }}</p>
+{% else %}
+  <p><strong>Final verdict:</strong>
+    {{ 'fake' if report.ai_score >= 0.5 else 'real' }}
+  </p>
+{% endif %}
+
+    <div class="card">
+      <div style="display:flex; gap:18px; align-items:flex-start;">
+        <div style="flex:1;">
+          <p><strong>AI Fake Probability:</strong> <strong>{{ (report.ai_score*100)|round(2) }}%</strong></p>
+          <p><strong>Authenticity Score:</strong> {{ report.authenticity_score }}</p>
+          <p><strong>Blockchain Verified:</strong> {{ 'Yes' if report.blockchain_verified else 'No' }}</p>
+          <p>
+            <strong>SHA256:</strong>
+            <span class="hash" title="{{ report.hash }}">{{ report.hash }}</span>
+            <button type="button" class="copy-hash-btn" data-hash="{{ report.hash }}" aria-label="Copy hash">📋</button>
+          </p>
+
+          <p style="margin-top:8px;">
+            <a class="btn" href="{{ url_for('download_report_file', filename=report_file_name) }}">Download JSON</a>
+            <a class="btn btn-secondary" style="margin-left:8px;" href="{{ url_for('report_pdf', filename=report_file_name) }}">Download PDF</a>
+            <a class="btn btn-secondary" style="margin-left:8px;" href="{{ url_for('uploads_page') }}">View Uploads</a>
+          </p>
+        </div>
+
+        <div style="width:360px;">
+          <!-- Confidence bar -->
+          <h4 style="margin:0 0 6px 0;">Model Confidence</h4>
+          <div style="background:#eee; height:18px; border-radius:9px; overflow:hidden;">
+            <div style="height:18px; width:{{ (report.ai_score*100)|round(1) }}%; background: linear-gradient(90deg,#ff5f6d,#ffc371);"></div>
+          </div>
+          <p class="small-muted" style="margin-top:6px;">Fake probability: {{ (report.ai_score*100)|round(2) }}%</p>
+
+          <!-- model metadata -->
+          <h5 style="margin-top:12px;">Model & Environment</h5>
+          <ul class="meta-list">
+            <li><strong>Model:</strong> {{ report.model_name or 'deepfake_model.h5' }}</li>
+            <li><strong>Model SHA256:</strong> <code style="font-family:monospace;">{{ report.model_sha256 }}</code></li>
+            <li><strong>TF:</strong> {{ report.tf_version }}</li>
+            <li><strong>Python:</strong> {{ report.python_version }}</li>
+            <li><strong>Generated:</strong> {{ report.generated_at }}</li>
+            {% if report.tx_hash %}
+              <li><strong>Tx hash:</strong>
+                <a href="https://etherscan.io/tx/{{ report.tx_hash }}" target="_blank" rel="noopener noreferrer">{{ report.tx_hash }}</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- === media + thumbs + heatmap === -->
+    <div class="card" style="display:flex; gap:16px; align-items:flex-start;">
+      <div style="flex:1;">
+        {% if filename.lower().endswith(('.mp4', '.mov', '.avi', '.mkv')) %}
+          <h4>🎬 Source Video</h4>
+          <video width="100%" controls preload="metadata" style="border-radius:8px; border:1px solid #ddd;">
+            <source src="{{ url_for('uploaded_file', filename=filename) }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        {% else %}
+          <h4>🖼 Source Image</h4>
+          <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="{{ filename }}" style="max-width:100%; border-radius:8px; border:1px solid #ddd;">
+        {% endif %}
+
+        <!-- thumbs saved during processing -->
+        {% if report.thumbs %}
+          <h5 style="margin-top:12px;">Sampled frames / thumbs</h5>
+          <div class="thumb-grid">
+            {% for t in report.thumbs %}
+              {# t is like "thumbs/xxx.jpg" (relative inside reports/) #}
+              <a href="{{ url_for('report_raw', filename=t) }}" target="_blank" style="display:inline-block;">
+                <img src="{{ url_for('report_raw', filename=t) }}" alt="thumb" style="width:150px; border:1px solid #ddd; border-radius:6px;">
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div style="width:360px;">
+        {% if heatmap %}
+          <h4>🔥 Model Focus Heatmap</h4>
+          <img src="/{{ heatmap }}" alt="Heatmap" style="width:100%; border-radius:8px; border:1px solid #ddd;">
+        {% endif %}
+
+        <h4 style="margin-top:12px;">Decision Breakdown</h4>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><th style="text-align:left">Factor</th><th style="text-align:right">Weight</th><th style="text-align:right">Score</th></tr>
+          <tr><td>AI Model</td><td style="text-align:right">0.6</td><td style="text-align:right">{{ (1 - report.ai_score)|round(3) }}</td></tr>
+          <tr><td>Metadata</td><td style="text-align:right">0.3</td><td style="text-align:right">0.8</td></tr>
+          <tr><td>Blockchain</td><td style="text-align:right">0.1</td><td style="text-align:right">{{ 1 if report.blockchain_verified else 0 }}</td></tr>
+        </table>
+
+        <!-- mark ground truth form -->
+        <h5 style="margin-top:12px;">Provide feedback / mark ground truth</h5>
+
+        {% if ground_truth %}
+          <p class="small-muted" style="margin:4px 0 6px;">
+            Current ground truth: <strong>{{ ground_truth }}</strong>
+          </p>
+        {% endif %}
+
+        <form method="post" action="{{ url_for('mark_truth', filename=filename) }}">
+          <label for="true_label" class="small-muted">Mark true label:</label>
+          <div style="margin-top:6px;">
+            <select id="true_label" name="true_label" class="truth-select" aria-label="Mark true label">
+              <option value="">-- select --</option>
+              <option value="real" {% if ground_truth == 'real' %}selected{% endif %}>real</option>
+              <option value="fake" {% if ground_truth == 'fake' %}selected{% endif %}>fake</option>
+            </select>
+            <button class="btn" type="submit" style="margin-left:8px;">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+      <!-- === per-frame chart (if available) === -->
+      {% if report.frame_scores and (report.frame_scores | length) > 0 %}
+      <div class="card">
+        <h3>📈 Per-frame Scores</h3>
+        <canvas id="frameChart" width="900" height="220"></canvas>
+        <p class="small-muted">Aggregation method: mean probability across sampled frames (threshold 0.5).</p>
+      </div>
+      {% endif %}
+  
+      <div style="margin:14px 0;">
+        <a href="/dashboard" class="btn btn-secondary">⬅ Back to Dashboard</a>
+      </div>
+    </div>
+  
+    <script>
+    // copy hash button
+    document.addEventListener('click', function(e){
+      if(e.target && e.target.classList.contains('copy-hash-btn')){
+        const hash = e.target.getAttribute('data-hash') || '';
+        if(!hash) return;
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(hash).then(() => {
+            const orig = e.target.innerText;
+            e.target.innerText = '✓';
+            setTimeout(()=> e.target.innerText = orig, 1200);
+          }).catch(()=> alert('Could not copy hash.'));
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = hash;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); alert('Hash copied'); } catch(err){ alert('Copy failed'); }
+          document.body.removeChild(ta);
+        }
+      }
+    });
+  
+    // Chart.js per-frame scores
+    {% if report.frame_scores and (report.frame_scores | length) > 0 %}
+      const frameScores = {{ report.frame_scores | tojson }};
+      const labels = frameScores.map((_,i)=>i+1);
+      const ctx = document.getElementById('frameChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Frame fake-prob',
+            data: frameScores,
+            fill: true,
+            tension: 0.2,
+            pointRadius: 2,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          scales: {
+            y: { min: 0, max: 1, title: { display: true, text: 'Probability' } },
+            x: { title: { display: true, text: 'Sampled frame index' } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    {% endif %}
+    </script>
+  </body>
+  </html>
+  </script>
+</body>
+</html>
