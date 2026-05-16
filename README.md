@@ -103,3 +103,143 @@ P15_DeepfakeDetection_FinalYearProject/
 │── requirements.txt
 │── README.md
 │── .gitignore
+```
+
+## 📸 Screenshots
+
+### Home Page
+![Home](screenshots/home_page.png)
+
+### Deepfake Detection Result
+![Detection](screenshots/deepfake_result_report.png)
+
+### Blockchain Verification
+![Blockchain](screenshots/blockchain_verification.png)
+
+---
+
+## 🎥 Demo Video
+
+📺 Watch the Project Demonstration Here:
+
+[▶️ Watch Demo Video](YOUR_YOUTUBE_LINK)
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### 2️⃣ Activate Environment
+
+**Windows**
+```bash
+venv\Scripts\activate
+```
+
+**Linux / Mac**
+```bash
+source venv/bin/activate
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 🧠 Model Training *(Optional)*
+
+```bash
+python training.py
+```
+
+> ⚠️ For better accuracy, use large datasets like **FaceForensics++** or **DFDC**.
+
+---
+
+## 🔗 Blockchain Setup
+
+### Start Ganache
+
+```txt
+http://127.0.0.1:7545
+```
+
+### Deploy Smart Contract
+
+```bash
+python app/blockchain/deploy_contract.py
+```
+
+---
+
+## ▶️ Run the Application
+
+```bash
+python app/app.py
+```
+
+Open in browser:
+
+```txt
+http://127.0.0.1:5000
+```
+
+---
+
+## 🧪 Working Flow
+
+1️⃣ User uploads **video/image**  
+
+2️⃣ Model predicts whether media is **Real or Fake**  
+
+3️⃣ SHA-256 hash generated and verified through **Blockchain**  
+
+4️⃣ Multi-factor system calculates the **final authenticity score**  
+
+5️⃣ Final result displayed to the user  
+
+---
+
+## 🎯 Applications
+
+- 📱 Social Media Content Moderation  
+- 📰 News & Journalism Verification  
+- 🕵️ Digital Forensics  
+- 🔐 Cybercrime Prevention  
+
+---
+
+## ⚠️ Notes
+
+- Pretrained model included for demo purposes  
+- Retraining recommended for better accuracy  
+- Blockchain module can be used optionally for demonstration  
+
+---
+
+## 🔮 Future Scope
+
+- 🎥 Live Video Streaming Detection  
+- 📱 Mobile Application Integration  
+- 🤖 Advanced AI Models *(GAN Detection)*  
+- ☁️ Cloud Deployment  
+
+---
+
+## 🧠 Model Availability
+
+Due to GitHub file size limitations, the trained **`.h5` model file** is not included in this repository.
+
+The model can be shared upon request for **academic and educational purposes**.
+
+---
+
+## 📜 License
+
+This project is intended for **academic and educational use only**.
