@@ -126,6 +126,16 @@ P15_DeepfakeDetection_FinalYearProject/
 
 ---
 
+## 📄 Research Paper
+
+The research paper related to this project is available in the `research-paper/` folder.
+
+Topics Covered:
+- Deepfake Detection
+- Blockchain Verification
+- Multi-Factor Authentication
+- CNN-based Analysis
+
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Create Virtual Environment
