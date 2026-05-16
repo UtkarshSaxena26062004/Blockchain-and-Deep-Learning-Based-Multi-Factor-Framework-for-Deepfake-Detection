@@ -122,7 +122,7 @@ P15_DeepfakeDetection_FinalYearProject/
 
 📺 Watch the Project Demonstration Here:
 
-[▶️ Watch Demo Video]((https://youtu.be/eu_lxRwCIC8?si=CYQA3HU-z1NZPs6l))
+[▶️ Watch Demo Video](https://youtu.be/eu_lxRwCIC8?si=CYQA3HU-z1NZPs6l)
 
 ---
 
