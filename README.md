@@ -248,7 +248,6 @@ The notebook contains:
 - Evaluation process  
 
 > ⚠️ Due to GitHub file size limitations, the trained `.h5` model file is not included in this repository.
-```
 
 ---
 
