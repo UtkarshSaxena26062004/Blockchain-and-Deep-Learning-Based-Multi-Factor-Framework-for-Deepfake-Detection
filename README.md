@@ -136,6 +136,14 @@ Topics Covered:
 - Multi-Factor Authentication
 - CNN-based Analysis
 
+## 📊 Project Presentation
+
+The project presentation is available inside the `project-ppt/` folder.
+
+```txt
+project-ppt/
+└── Final_Year_Project_Presentation.pptx
+
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Create Virtual Environment
