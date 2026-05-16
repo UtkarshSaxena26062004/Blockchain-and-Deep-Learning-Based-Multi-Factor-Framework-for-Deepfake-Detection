@@ -232,11 +232,23 @@ http://127.0.0.1:5000
 
 ---
 
-## 🧠 Model Availability
+## 🧠 Model & Notebook
 
-Due to GitHub file size limitations, the trained **`.h5` model file** is not included in this repository.
+The project includes the **training and experimentation notebook** inside the `notebooks/` folder.
 
-The model can be shared upon request for **academic and educational purposes**.
+```txt
+notebooks/
+└── Utkarsh_DEEPFAKE.ipynb
+```
+
+The notebook contains:
+- Data preprocessing  
+- Model training workflow  
+- Deepfake detection experimentation  
+- Evaluation process  
+
+> ⚠️ Due to GitHub file size limitations, the trained `.h5` model file is not included in this repository.
+```
 
 ---
 
